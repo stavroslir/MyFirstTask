@@ -37,7 +37,7 @@ We will find the alert in our /var/log/messages or /var/log/syslog file on the s
 you can create a parser in the server to simple print the syslog file with the following process.
 
 > touch myparser.py
-> chmod +x myparser.py
+> chmod +x myparser.py 
 > vim my parser   (and then paste the following code)
 
 f = open("/var/log/messages", "r")
