@@ -52,21 +52,25 @@ You can run them on your own with the following steps:
 
 For the server:
 > cd /var/log
+ 
+
 > ./myshellscript.sh
 
 For the client:
 >cd /var/log/snort
+
 >./myshellscript.sh   
 
 and for the 2nd client that creates the traffic:
 >cd /var/log/snort
+
 >./secclient.sh
 
 
 NOTE!
 You should make the Server do the restart first ,or this might not work!
 
-If you ran the bash script i have uploaded ,the whole process gets done automatically.
+You can run the bash script i have uploaded ,the whole process gets done automatically.
 
 
 
