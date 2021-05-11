@@ -6,7 +6,7 @@ I am running my syslog server as host
 Steps :
 for the server :
 
-> sudo docker run --privileged -it -P --rm --net=host mysyslogserver /bin/bash
+> sudo docker run --privileged -it -P --rm --net=host stavroslir/mysyslogserver /bin/bash
 
 > sudo service rsyslog restart
   
@@ -14,7 +14,7 @@ for the server :
   
 for the client :
 
-> sudo docker run --privileged -it --rm --net=host myclientsys /bin/bash
+> sudo docker run -it --privileged --rm -P --net=host stavroslir/myclient   /bin/bash
 
 > snort -i wlp6s0 -s -c /etc/snort/etc/snort.conf -A fast     (I use wifi, if using Ethernet ,use ifconfig to check your enps)
 
@@ -31,24 +31,42 @@ In the first container again
 > sudo service rsyslog restart
 
 > logger -n 127.0.0.1 -f alert -P 514
+
+
     
-We will find the alert in our /var/log/messages or /var/log/syslog file on the server.
+We will find the alert in our /var/log/messages or /var/log/messages file on the server.
  
-you can create a parser in the server to simple print the syslog file with the following process.
-
-> touch myparser.py
-
-> chmod +x myparser.py 
-
-> vim my parser   (and then paste the following code)
-
-f = open("/var/log/messages", "r")
-print(f.read()) 
- 
-> /.myparser.py 
+> tail -f messages
  
  
  you can pull my docker images from here:
  server :https://hub.docker.com/r/stavroslir/mysyslogserver
- client :https://hub.docker.com/r/stavroslir/mysyslogclient
+ client :https://hub.docker.com/r/stavroslir/myclient
+
+
+UPDATED!!
+I have created 3 bash scripts ,one for each container that when you run it does automatically the job for you.
+You can either run it on your own with the following steps:
+For the server:
+> cd /var/log
+> ./myshellscript.sh
+
+For the client:
+>cd /var/log/snort
+>./myshellscript.sh   
+
+and for the 2nd client that creates the traffic:
+>cd /var/log/snort
+>./secclient.sh
+
+
+NOTE!
+You should make the Server do the restart first ,or this might not work!
+
+If you ran the bash script i have uploaded ,the whole process gets done automatically.
+
+
+
+
+
 
