@@ -45,8 +45,11 @@ We will find the alert in our /var/log/messages or /var/log/messages file on the
 
 
 UPDATED!!
+
 I have created 3 bash scripts ,one for each container that when you run it does automatically the job for you.
 You can either run it on your own with the following steps:
+
+
 For the server:
 > cd /var/log
 > ./myshellscript.sh
