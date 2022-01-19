@@ -1,4 +1,3 @@
-# MyFirstTask
 Creating a NIDS using snort which replays its alerts in a syslog server
 
 I am running my syslog server as host 
